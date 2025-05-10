@@ -1,22 +1,13 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: v1
+kind: Service
 metadata:
-  name: guestbook
-  labels:
-    app: guestbook
+  name: demo-service
+  namespace: demo-app
 spec:
-  replicas: 1
   selector:
-    matchLabels:
-      app: guestbook
-  template:
-    metadata:
-      labels:
-        app: guestbook
-    spec:
-      containers:
-      - name: guestbook
-        image: gcr.io/heptio-images/guestbook
-        ports:
-        - containerPort: 3000
-
+    app: demo
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80
+    type: ClusterIapiVersion: v1

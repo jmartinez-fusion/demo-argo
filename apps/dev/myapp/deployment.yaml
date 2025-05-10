@@ -1,22 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: guestbook
-  labels:
-    app: guestbook
+  name: demo-deployment
+  namespace: demo-app
 spec:
-  replicas: 1
+  replicas: 1 
   selector:
     matchLabels:
-      app: guestbook
+      app: demo
   template:
     metadata:
       labels:
-        app: guestbook
+        app: demo
     spec:
       containers:
-      - name: guestbook
-        image: gcr.io/heptio-images/guestbook
+      - name: nginx
+        image: nginx:latest
         ports:
-        - containerPort: 3000
+        - containerPort: 80
 
